@@ -37,24 +37,32 @@ video {
   vertical-align: middle;
 }
 
-.input-name {
-  margin: 0 20px;
-}
-
 .input {
   margin-bottom: 34px;
+}
+
+.textfield {
+  color: #ababab;
+  position: relative;
+  margin: 0 12px 0;
+  font-size: 16px;
+  padding: 0 16px;
 }
 
 .input-name input {
   width: 195px;
   height: 56px;
   flex-shrink: 0;
-  border-radius: 5px;
-  font-size: 16px;
   color: var(--grey-color);
   border: 1px solid var(--grey-color);
-  padding: 0 16px;
-  margin-right: 10px;
+  border-radius: 5px;
+  padding: 0 12px;
+}
+
+.input-name label {
+  position: absolute;
+  top: 13px;
+  left: 8px;
 }
 
 .input-name input:hover {
@@ -65,20 +73,30 @@ video {
 @keyframes name {
   0% {
     border: 2px solid #f4423500;
-    background-color: #f4423500;
   }
   50% {
-    border: 2px solid #f44335;
-    background-color: #f4423540;
+    border: 2px solid var(--red-color);
   }
   100% {
     border: 2px solid #f4433500;
-    background-color: #f4423500;
   }
 }
 
 label {
   margin-left: 16px;
+}
+
+input:focus + label {
+  transform: translateY(-27px) scale(0.7);
+}
+
+.textfield label {
+  position: absolute;
+  pointer-events: none; /* on empêche le click sur le label, pour ne pas empêcher la sélection de l'input */
+  background: white; /* on ajoute une couleur de fond, pour cacher la bordure de l'input */
+  padding: 5px;
+  transition: transform 0.3s; /* on ajoute une transition */
+  transform-origin: left; /* on commence la transformation à gauche, pour que le label reste bien à gauche */
 }
 
 .radio,
@@ -148,29 +166,69 @@ input:checked + .radio-placeholder div {
   }
 }
 
+.input-checkbox {
+  margin-left: 25px;
+}
+
 /* l'élément allongé, qui contient le rond se déplace */
 .switch-wrapper {
   display: inline-block; /* pour que le div soit à côté du texte */
-  width: 30px;
-  height: 20px;
-  padding: 2px;
+  position: relative;
+  width: 35px;
+  height: 14px;
   border-radius: 10px;
-  background: var(--red-color);
+  background: #f4423580;
   margin-right: 12px;
+  top: 3px;
 }
 
 /* le rond qui se déplace */
 .switch-inner {
-  width: 16px;
-  height: 16px;
-  border-radius: 8px;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  bottom: 3px;
+  border-radius: 16px;
   background: var(--red-color);
 }
 
 input:checked + .switch-wrapper .switch-inner {
-  margin-left: 10px;
+  margin-left: 15px;
+}
+
+input:checked + .switch-wrapper .switch-focus {
+  /* margin-left: 15px; */
 }
 
 .switch input {
   display: none;
+}
+
+.switch-focus {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  opacity: 0%;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  z-index: 2;
+  background-color: #f4423540;
+}
+
+.switch-focus:hover {
+  animation-name: switch-hover;
+  animation-duration: 0.5s;
+}
+
+@keyframes switch-hover {
+  0% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
 }

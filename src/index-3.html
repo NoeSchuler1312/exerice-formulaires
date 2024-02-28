@@ -15,8 +15,14 @@
   <body>
     <form action="">
       <div class="input input-name">
-        <input type="text" placeholder="Prénom" name="firstname" />
-        <input type="text" placeholder="Nom" name="name" />
+        <div class="textfield">
+          <input type="text" />
+          <label>Prénom</label>
+        </div>
+        <div class="textfield">
+          <input type="text" />
+          <label>Nom</label>
+        </div>
       </div>
       <div class="input input-language">
         <label class="radio">
@@ -48,14 +54,18 @@
         <label class="switch">
           <input type="checkbox" />
           <div class="switch-wrapper">
-            <div class="switch-inner"></div>
+            <div class="switch-inner">
+              <div class="switch-focus"></div>
+            </div>
           </div>
           S'inscrire à la newsletter
         </label>
         <label class="switch">
           <input type="checkbox" />
           <div class="switch-wrapper">
-            <div class="switch-inner"></div>
+            <div class="switch-inner">
+              <div class="switch-focus"></div>
+            </div>
           </div>
           J’accepte les conditions générales
         </label>
